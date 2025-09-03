@@ -1,7 +1,7 @@
 services:
   contactcentre:
     build:
-      context: ./ContactCustomer
+      context: ./client-process
       dockerfile: Dockerfile.contact
     container_name: contactcentre
     ports:
@@ -47,17 +47,21 @@ services:
     ports:
       - "5000:5000"
     environment:
-      MONGO_URI: mongodb://10.192.190.158:27017/registeredUser
+      MONGO_URI: mongodb://10.192.190.158:27017/InsuranceDB
     depends_on:
       - mongo
 
   mongo:
     image: mongo:latest
-    container_name: database
+    container_name: ExpleoInsurance-MongoDB-dev
     ports:
       - "27017:27017"
     volumes:
       - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: Insurance123
+      MONGO_INITDB_ROOT_PASSWORD: Passw0rd
+    restart: unless-stopped  
 
 volumes:
   mongo_data:
