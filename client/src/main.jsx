@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import DashboardPage from "./pages/DashboardPage.jsx";
 import ClientCreationPage from "./pages/ClientCreationPage.jsx";
+import ClientModel from "./layouts/ClientModel.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,12 @@ const router = createBrowserRouter([
   {
     path:"/clientCreation",
     element:<ClientCreationPage/>
+  },
+  {
+    path:"/model",
+    element:<ClientModel/>
   }
+
 ]);
 createRoot(document.getElementById("root")).render(
   <StrictMode>
